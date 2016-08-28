@@ -1,0 +1,99 @@
+1.final作用在class 、 method 、member 、static member 、parameter上都有什么含义
+	class	不能被继承，所有方法都是final
+	method	方法不能被子类覆盖
+	member(static)	常量
+	parameter	read-only
+
+2.死锁产生的原因和条件
+	原因：
+		1.系统资源不足
+		2.进程运行推进的顺序不合适
+		3.资源分配不当
+	必要条件：
+		1.互斥使用资源
+		2.占有并等待资源
+		3.不可抢夺资源
+		4.循环等待资源
+
+3.IP无分类编址(CIDR)
+	聚合使用最长前缀匹配
+	
+4.tcp建立时候得三次握手 & 释放时四次握手
+
+5. java equals & hashcode
+	equals相等 hashcode必须相等
+	hashcode相等 equals不一定相等(hash 冲突)
+	
+6.HashMap(1.7.0_80)
+	resize
+		查看是否达到最大容量
+		如果达到最大容量，直接返回，否则继续
+		生成新数组，然后transfer
+		迭代原数组，并迭代每个元素上的链表
+		*需要依据hash和capacity重新计算key的位置
+		hashmap put数据，相同的hash时候，链表采用头插法
+		没法resize后，hashmap的链表长度会越来越长，降低性能
+	hash
+		参数为key
+		string特殊处理(sun.misc.Hashing.stringHash32)
+		hash混合高位和低位，加大低位的随机性（使indexFor产生的结果分布更加均匀 hash & (length-1)）
+
+7.java 类加载机制&反射
+	类加载方式：
+		new 导致常量池的解析,类被隐式装载.如果当前ClassLoader无法找到,则抛出NoClassDefFoundError
+		Class.forName	通过反射加载类型,并创建对象实例.如果无法找到,则抛出ClassNotFoundException
+		ClassLoader.loadClass 通过反射加载类型,并创建对象实例.如果无法找到,则抛出ClassNotFoundException
+		1和2使用的类加载器是相同的(都是当前类加载器),3由用户指定类加载器
+		如果需要在当前类路径以外寻找类，则只能采用第3种方式.
+		第3种方式加载的类与当前类分属不同的命名空间,当前类加载器命名空间对其不可见
+		如果被加载类的超类对于当前类命名空间可见的话,则可以进行强制转型
+	为何自定义类加载器：
+		加密/解密
+		从非标准来源加载代码
+		动态创建
+	反射
+		Class Constructor Method Field
+
+8.java代理
+	jdk动态代理（基于接口）
+	cglib动态代理
+	NameNode HA的两层动态代理,第一层封装ConfiguredFailoverProxyProvider，第二层（内部一层）封装NNProxy
+	第一层代理ClientProtocol，HandlerInvoker中调用ConfiguredFailoverProxyProvider的proxy
+	第二层代理ClientNamenodeProtocolPB，HandlerInvoker为ProtobufRpcEngine中的Invoker，依据method名字，生成
+	对应的远程方法调用
+	
+	
+9.操作系统(linux)同步机制（银行家算法）
+	
+
+
+map/reduce过程（InputSplit的生成）
+quicksort最坏情况如何提高到最好情况
+Top K 系统设计
+k-v存储系统设计，考虑底层数据结构
+将字符串中的大写字母放最后，相对位置不变，不允许使用额外空间
+hive权限模式
+hive metastore的高可用
+hbase权限模型
+hbase内部数据结构
+linux系统的常用工具
+jvm cas的实现
+java nio
+IO NIO AIO
+yarn container如何指定使用的cpu核数
+自旋锁 & 递归锁
+ConcurrentHashMap
+10G数据，time+IP，2G内存的java app，求top 10的IP
+KMP算法
+最长公共子串
+
+算法设计与分析
+
+MDP与CDH HDP比较的优劣势
+dataone与hue比较的优劣势
+
+
+
+
+
+	
