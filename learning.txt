@@ -64,7 +64,7 @@
 	
 	
 9.操作系统(linux)同步机制（银行家算法）
-	
+	自旋锁 & 递归锁	
 
 10.排序
 	冒泡排序
@@ -75,23 +75,36 @@
 	简单选择排序
 	堆排序（*）
 
+11.10G数据，time+IP，2G内存的java app，求top 10的IP
+	timestamp 8byte + IP 4byte
+	故IP的大小：10G*(4/(8+4))
+	IP可能出现的种类是4G(2的32次方)，数据量总大小是3.33G，所以不可能是全量IP
+	对IP hash，进行分桶（两个即可，数据可调整）
+	在桶内求Top 10
+	聚合两个桶的Top 10，求最终的Top 10
+	
+ConcurrentHashMap
 map/reduce过程（InputSplit的生成）
-
-Top K 系统设计
-k-v存储系统设计，考虑底层数据结构
-将字符串中的大写字母放最后，相对位置不变，不允许使用额外空间
 hive权限模式
 hive metastore的高可用
 hbase权限模型
 hbase内部数据结构
+
+
+
+yarn container如何指定使用的cpu核数
 linux系统的常用工具
+
+
+Top K 系统设计
+k-v存储系统设计，考虑底层数据结构
+将字符串中的大写字母放最后，相对位置不变，不允许使用额外空间
 jvm cas的实现
 java nio
 IO NIO AIO
-yarn container如何指定使用的cpu核数
-自旋锁 & 递归锁
-ConcurrentHashMap
-10G数据，time+IP，2G内存的java app，求top 10的IP
+
+
+
 KMP算法
 最长公共子串
 
